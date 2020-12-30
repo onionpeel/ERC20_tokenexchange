@@ -1,0 +1,692 @@
+{
+  "contractName": "TokenExchange",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract FunToken",
+          "name": "_funToken",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_exchangeRate",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "exchangeRate",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function",
+      "constant": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.7.6+commit.7338295f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract FunToken\",\"name\":\"_funToken\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_exchangeRate\",\"type\":\"uint256\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"inputs\":[],\"name\":\"exchangeRate\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/TokenExchange.sol\":\"TokenExchange\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/FunToken.sol\":{\"keccak256\":\"0xc105b4bdf2ec49b1257c37047f328b145726ab021208d1c2edcb33eba8a67ace\",\"urls\":[\"bzz-raw://940ece29f8ae83dbe2bcbc84ab5896875cde645baeed3b2af05c6a1b43ca6107\",\"dweb:/ipfs/QmQieedEGKjzgv1sKNRGhfLZxY9mJqwQrGxcH6zAT3TJrj\"]},\"/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/TokenExchange.sol\":{\"keccak256\":\"0xee46700eb11bae4ae4e4390010436176aa0453c8b4364b72afbda56a401d23a5\",\"urls\":[\"bzz-raw://3e5dc202f50feb48ede33e6dd0e583b819801aa88a9ce8ffa697fa4f17bab943\",\"dweb:/ipfs/QmXBYa9CVb7HysokF1AZDCQ7QNYVQzRYULARvFgGJVuwH1\"]},\"@openzeppelin/contracts/GSN/Context.sol\":{\"keccak256\":\"0x8d3cb350f04ff49cfb10aef08d87f19dcbaecc8027b0bed12f3275cd12f38cf0\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ded47ec7c96750f9bd04bbbc84f659992d4ba901cb7b532a52cd468272cf378f\",\"dweb:/ipfs/QmfBrGtQP7rZEqEg6Wz6jh2N2Kukpj1z5v3CGWmAqrzm96\"]},\"@openzeppelin/contracts/math/SafeMath.sol\":{\"keccak256\":\"0x3b21f2c8d626de3b9925ae33e972d8bf5c8b1bffb3f4ee94daeed7d0679036e6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7f8d45329fecbf0836ad7543330c3ecd0f8d0ffa42d4016278c3eb2215fdcdfe\",\"dweb:/ipfs/QmXWLT7GcnHtA5NiD6MFi2CV3EWJY4wv5mLNnypqYDrxL3\"]},\"@openzeppelin/contracts/token/ERC20/ERC20.sol\":{\"keccak256\":\"0xcbd85c86627a47fd939f1f4ee3ba626575ff2a182e1804b29f5136394449b538\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://53c6a80c519bb9356aad28efa9a1ec31603860eb759d2dc57f545fcae1dd1aca\",\"dweb:/ipfs/QmfRS6TtMNUHhvgLHXK21qKNnpn2S7g2Yd1fKaHKyFiJsR\"]},\"@openzeppelin/contracts/token/ERC20/IERC20.sol\":{\"keccak256\":\"0x5f02220344881ce43204ae4a6281145a67bc52c2bb1290a791857df3d19d78f5\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://24427744bd3e6cb73c17010119af12a318289c0253a4d9acb8576c9fb3797b08\",\"dweb:/ipfs/QmTLDqpKRBuxGxRAmjgXt9AkXyACW3MtKzi7PYjm5iMfGC\"]}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161012b38038061012b8339818101604052604081101561003357600080fd5b8101908080519060200190929190805190602001909291905050508060008190555081600160006101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff16021790555050506085806100a66000396000f3fe6080604052348015600f57600080fd5b506004361060285760003560e01c80633ba0b9a914602d575b600080fd5b60336049565b6040518082815260200191505060405180910390f35b6000548156fea2646970667358221220d6bcce38579832a170459c0ea99256b4b299884a7946fb71408710d904d72b9164736f6c63430007060033",
+  "deployedBytecode": "0x6080604052348015600f57600080fd5b506004361060285760003560e01c80633ba0b9a914602d575b600080fd5b60336049565b6040518082815260200191505060405180910390f35b6000548156fea2646970667358221220d6bcce38579832a170459c0ea99256b4b299884a7946fb71408710d904d72b9164736f6c63430007060033",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "55:204:2:-:0;;;136:120;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;210:13;195:12;:28;;;;241:9;230:8;;:20;;;;;;;;;;;;;;;;;;136:120;;55:204;;;;;;",
+  "deployedSourceMap": "55:204:2:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;83:24;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.7.6;\r\n\r\nimport './FunToken.sol';\r\n\r\ncontract TokenExchange {\r\n  uint public exchangeRate;\r\n  FunToken funToken;\r\n\r\n  constructor(FunToken _funToken, uint _exchangeRate) {\r\n    exchangeRate = _exchangeRate;\r\n    funToken = _funToken;\r\n  }\r\n}\r\n\r\n// state variables\r\n// uint public exchangeRate\r\n// FunToken funToken\r\n//\r\n// functions\r\n// public buyTokens\r\n//\r\n//\r\n// public sellTokens\r\n//\r\n// event\r\n// Bought\r\n//   amount\r\n//   buyer msg.sender\r\n//   buyerNewBalance\r\n",
+  "sourcePath": "C:/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/TokenExchange.sol",
+  "ast": {
+    "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/TokenExchange.sol",
+    "exportedSymbols": {
+      "Context": [
+        105
+      ],
+      "ERC20": [
+        804
+      ],
+      "FunToken": [
+        25
+      ],
+      "IERC20": [
+        882
+      ],
+      "SafeMath": [
+        301
+      ],
+      "TokenExchange": [
+        82
+      ]
+    },
+    "id": 83,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 60,
+        "literals": [
+          "solidity",
+          "^",
+          "0.7",
+          ".6"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/FunToken.sol",
+        "file": "./FunToken.sol",
+        "id": 61,
+        "nodeType": "ImportDirective",
+        "scope": 83,
+        "sourceUnit": 26,
+        "src": "27:24:2",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "id": 82,
+        "linearizedBaseContracts": [
+          82
+        ],
+        "name": "TokenExchange",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "constant": false,
+            "functionSelector": "3ba0b9a9",
+            "id": 63,
+            "mutability": "mutable",
+            "name": "exchangeRate",
+            "nodeType": "VariableDeclaration",
+            "scope": 82,
+            "src": "83:24:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_uint256",
+              "typeString": "uint256"
+            },
+            "typeName": {
+              "id": 62,
+              "name": "uint",
+              "nodeType": "ElementaryTypeName",
+              "src": "83:4:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_uint256",
+                "typeString": "uint256"
+              }
+            },
+            "visibility": "public"
+          },
+          {
+            "constant": false,
+            "id": 65,
+            "mutability": "mutable",
+            "name": "funToken",
+            "nodeType": "VariableDeclaration",
+            "scope": 82,
+            "src": "112:17:2",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_contract$_FunToken_$25",
+              "typeString": "contract FunToken"
+            },
+            "typeName": {
+              "id": 64,
+              "name": "FunToken",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 25,
+              "src": "112:8:2",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_FunToken_$25",
+                "typeString": "contract FunToken"
+              }
+            },
+            "visibility": "internal"
+          },
+          {
+            "body": {
+              "id": 80,
+              "nodeType": "Block",
+              "src": "188:68:2",
+              "statements": [
+                {
+                  "expression": {
+                    "id": 74,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 72,
+                      "name": "exchangeRate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 63,
+                      "src": "195:12:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 73,
+                      "name": "_exchangeRate",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 69,
+                      "src": "210:13:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_uint256",
+                        "typeString": "uint256"
+                      }
+                    },
+                    "src": "195:28:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "id": 75,
+                  "nodeType": "ExpressionStatement",
+                  "src": "195:28:2"
+                },
+                {
+                  "expression": {
+                    "id": 78,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "id": 76,
+                      "name": "funToken",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 65,
+                      "src": "230:8:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_FunToken_$25",
+                        "typeString": "contract FunToken"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "id": 77,
+                      "name": "_funToken",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 67,
+                      "src": "241:9:2",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_contract$_FunToken_$25",
+                        "typeString": "contract FunToken"
+                      }
+                    },
+                    "src": "230:20:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_FunToken_$25",
+                      "typeString": "contract FunToken"
+                    }
+                  },
+                  "id": 79,
+                  "nodeType": "ExpressionStatement",
+                  "src": "230:20:2"
+                }
+              ]
+            },
+            "id": 81,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 70,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 67,
+                  "mutability": "mutable",
+                  "name": "_funToken",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "148:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_FunToken_$25",
+                    "typeString": "contract FunToken"
+                  },
+                  "typeName": {
+                    "id": 66,
+                    "name": "FunToken",
+                    "nodeType": "UserDefinedTypeName",
+                    "referencedDeclaration": 25,
+                    "src": "148:8:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_FunToken_$25",
+                      "typeString": "contract FunToken"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 69,
+                  "mutability": "mutable",
+                  "name": "_exchangeRate",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 81,
+                  "src": "168:18:2",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 68,
+                    "name": "uint",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "168:4:2",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "147:40:2"
+            },
+            "returnParameters": {
+              "id": 71,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "188:0:2"
+            },
+            "scope": 82,
+            "src": "136:120:2",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "scope": 83,
+        "src": "55:204:2"
+      }
+    ],
+    "src": "0:486:2"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/TokenExchange.sol",
+      "exportedSymbols": {
+        "Context": [
+          105
+        ],
+        "ERC20": [
+          804
+        ],
+        "FunToken": [
+          25
+        ],
+        "IERC20": [
+          882
+        ],
+        "SafeMath": [
+          301
+        ],
+        "TokenExchange": [
+          82
+        ]
+      }
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "^",
+            "0.7",
+            ".6"
+          ]
+        },
+        "id": 60,
+        "name": "PragmaDirective",
+        "src": "0:23:2"
+      },
+      {
+        "attributes": {
+          "SourceUnit": 26,
+          "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/FunToken.sol",
+          "file": "./FunToken.sol",
+          "scope": 83,
+          "symbolAliases": [
+            null
+          ],
+          "unitAlias": ""
+        },
+        "id": 61,
+        "name": "ImportDirective",
+        "src": "27:24:2"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            82
+          ],
+          "name": "TokenExchange",
+          "scope": 83
+        },
+        "children": [
+          {
+            "attributes": {
+              "constant": false,
+              "functionSelector": "3ba0b9a9",
+              "mutability": "mutable",
+              "name": "exchangeRate",
+              "scope": 82,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "uint256",
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "uint",
+                  "type": "uint256"
+                },
+                "id": 62,
+                "name": "ElementaryTypeName",
+                "src": "83:4:2"
+              }
+            ],
+            "id": 63,
+            "name": "VariableDeclaration",
+            "src": "83:24:2"
+          },
+          {
+            "attributes": {
+              "constant": false,
+              "mutability": "mutable",
+              "name": "funToken",
+              "scope": 82,
+              "stateVariable": true,
+              "storageLocation": "default",
+              "type": "contract FunToken",
+              "visibility": "internal"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "name": "FunToken",
+                  "referencedDeclaration": 25,
+                  "type": "contract FunToken"
+                },
+                "id": 64,
+                "name": "UserDefinedTypeName",
+                "src": "112:8:2"
+              }
+            ],
+            "id": 65,
+            "name": "VariableDeclaration",
+            "src": "112:17:2"
+          },
+          {
+            "attributes": {
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "scope": 82,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "children": [
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_funToken",
+                      "scope": 81,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "contract FunToken",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "FunToken",
+                          "referencedDeclaration": 25,
+                          "type": "contract FunToken"
+                        },
+                        "id": 66,
+                        "name": "UserDefinedTypeName",
+                        "src": "148:8:2"
+                      }
+                    ],
+                    "id": 67,
+                    "name": "VariableDeclaration",
+                    "src": "148:18:2"
+                  },
+                  {
+                    "attributes": {
+                      "constant": false,
+                      "mutability": "mutable",
+                      "name": "_exchangeRate",
+                      "scope": 81,
+                      "stateVariable": false,
+                      "storageLocation": "default",
+                      "type": "uint256",
+                      "visibility": "internal"
+                    },
+                    "children": [
+                      {
+                        "attributes": {
+                          "name": "uint",
+                          "type": "uint256"
+                        },
+                        "id": 68,
+                        "name": "ElementaryTypeName",
+                        "src": "168:4:2"
+                      }
+                    ],
+                    "id": 69,
+                    "name": "VariableDeclaration",
+                    "src": "168:18:2"
+                  }
+                ],
+                "id": 70,
+                "name": "ParameterList",
+                "src": "147:40:2"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 71,
+                "name": "ParameterList",
+                "src": "188:0:2"
+              },
+              {
+                "children": [
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "uint256"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 63,
+                              "type": "uint256",
+                              "value": "exchangeRate"
+                            },
+                            "id": 72,
+                            "name": "Identifier",
+                            "src": "195:12:2"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 69,
+                              "type": "uint256",
+                              "value": "_exchangeRate"
+                            },
+                            "id": 73,
+                            "name": "Identifier",
+                            "src": "210:13:2"
+                          }
+                        ],
+                        "id": 74,
+                        "name": "Assignment",
+                        "src": "195:28:2"
+                      }
+                    ],
+                    "id": 75,
+                    "name": "ExpressionStatement",
+                    "src": "195:28:2"
+                  },
+                  {
+                    "children": [
+                      {
+                        "attributes": {
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "operator": "=",
+                          "type": "contract FunToken"
+                        },
+                        "children": [
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 65,
+                              "type": "contract FunToken",
+                              "value": "funToken"
+                            },
+                            "id": 76,
+                            "name": "Identifier",
+                            "src": "230:8:2"
+                          },
+                          {
+                            "attributes": {
+                              "overloadedDeclarations": [
+                                null
+                              ],
+                              "referencedDeclaration": 67,
+                              "type": "contract FunToken",
+                              "value": "_funToken"
+                            },
+                            "id": 77,
+                            "name": "Identifier",
+                            "src": "241:9:2"
+                          }
+                        ],
+                        "id": 78,
+                        "name": "Assignment",
+                        "src": "230:20:2"
+                      }
+                    ],
+                    "id": 79,
+                    "name": "ExpressionStatement",
+                    "src": "230:20:2"
+                  }
+                ],
+                "id": 80,
+                "name": "Block",
+                "src": "188:68:2"
+              }
+            ],
+            "id": 81,
+            "name": "FunctionDefinition",
+            "src": "136:120:2"
+          }
+        ],
+        "id": 82,
+        "name": "ContractDefinition",
+        "src": "55:204:2"
+      }
+    ],
+    "id": 83,
+    "name": "SourceUnit",
+    "src": "0:486:2"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.7.6+commit.7338295f.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x4178e2a84042B3379DE7fEB4C714c8Ec1cEa992d",
+      "transactionHash": "0x0f1a952e6ecd2305488142776063bfc935c45b085e43f66203d8d8711092aef4"
+    }
+  },
+  "schemaVersion": "3.3.3",
+  "updatedAt": "2020-12-30T05:12:00.480Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
