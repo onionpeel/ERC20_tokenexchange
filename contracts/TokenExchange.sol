@@ -4,28 +4,42 @@ import './FunToken.sol';
 
 contract TokenExchange {
   uint public exchangeRate;
-  FunToken private funToken;
+  FunToken public funToken;
+
+  event BoughtTokens(
+    address seller,
+    address indexed buyer,
+    uint indexed tokenAmount,
+    uint indexed rate
+  );
 
   constructor(FunToken _funToken, uint _exchangeRate) {
     exchangeRate = _exchangeRate;
     funToken = _funToken;
   }
 
-  function buyTokens() public payable {
+  function ethToTokens(uint _eth) private view returns(uint) {
+    return _eth * exchangeRate * 10**18;
+  }
 
+  function buyTokens() public payable {
+    uint tokens = ethToTokens(msg.value);
+    funToken.transfer(msg.sender, tokens);
+    emit BoughtTokens(address(this), msg.sender, tokens, exchangeRate);
   }
 }
 
-// state variables
-// uint public exchangeRate
-// FunToken funToken
-//
-// functions
+// t = 100 * 1
+// 100 = 100 * 1
+// 100/eR = e
 // public buyTokens
-//
-//
+// input: eth value
+// 1. convert eth to token amount
+// 2. funToken.transfer(msg.sender, tokens)
+// 3. emit event(from address, to address, token amount, exchange rate)
+
 // public sellTokens
-//
+
 // event
 // Bought
 //   amount

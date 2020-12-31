@@ -303,19 +303,19 @@
     "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/FunToken.sol",
     "exportedSymbols": {
       "Context": [
-        101
+        157
       ],
       "ERC20": [
-        800
+        856
       ],
       "FunToken": [
         21
       ],
       "IERC20": [
-        878
+        934
       ],
       "SafeMath": [
-        297
+        353
       ]
     },
     "id": 22,
@@ -338,7 +338,7 @@
         "id": 2,
         "nodeType": "ImportDirective",
         "scope": 22,
-        "sourceUnit": 801,
+        "sourceUnit": 857,
         "src": "27:55:0",
         "symbolAliases": [],
         "unitAlias": ""
@@ -351,10 +351,10 @@
               "id": 3,
               "name": "ERC20",
               "nodeType": "UserDefinedTypeName",
-              "referencedDeclaration": 800,
+              "referencedDeclaration": 856,
               "src": "107:5:0",
               "typeDescriptions": {
-                "typeIdentifier": "t_contract$_ERC20_$800",
+                "typeIdentifier": "t_contract$_ERC20_$856",
                 "typeString": "contract ERC20"
               }
             },
@@ -364,18 +364,18 @@
           }
         ],
         "contractDependencies": [
-          101,
-          800,
-          878
+          157,
+          856,
+          934
         ],
         "contractKind": "contract",
         "fullyImplemented": true,
         "id": 21,
         "linearizedBaseContracts": [
           21,
-          800,
-          878,
-          101
+          856,
+          934,
+          157
         ],
         "name": "FunToken",
         "nodeType": "ContractDefinition",
@@ -443,7 +443,7 @@
                       "name": "_mint",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [],
-                      "referencedDeclaration": 676,
+                      "referencedDeclaration": 732,
                       "src": "186:5:0",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_internal_nonpayable$_t_address_$_t_uint256_$returns$__$",
@@ -516,10 +516,10 @@
                   "name": "ERC20",
                   "nodeType": "Identifier",
                   "overloadedDeclarations": [],
-                  "referencedDeclaration": 800,
+                  "referencedDeclaration": 856,
                   "src": "153:5:0",
                   "typeDescriptions": {
-                    "typeIdentifier": "t_type$_t_contract$_ERC20_$800_$",
+                    "typeIdentifier": "t_type$_t_contract$_ERC20_$856_$",
                     "typeString": "type(contract ERC20)"
                   }
                 },
@@ -586,19 +586,19 @@
       "absolutePath": "/C/Users/jdink/Desktop/development/simple_erc20_exchange/contracts/FunToken.sol",
       "exportedSymbols": {
         "Context": [
-          101
+          157
         ],
         "ERC20": [
-          800
+          856
         ],
         "FunToken": [
           21
         ],
         "IERC20": [
-          878
+          934
         ],
         "SafeMath": [
-          297
+          353
         ]
       }
     },
@@ -618,7 +618,7 @@
       },
       {
         "attributes": {
-          "SourceUnit": 801,
+          "SourceUnit": 857,
           "absolutePath": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
           "file": "@openzeppelin/contracts/token/ERC20/ERC20.sol",
           "scope": 22,
@@ -635,17 +635,17 @@
         "attributes": {
           "abstract": false,
           "contractDependencies": [
-            101,
-            800,
-            878
+            157,
+            856,
+            934
           ],
           "contractKind": "contract",
           "fullyImplemented": true,
           "linearizedBaseContracts": [
             21,
-            800,
-            878,
-            101
+            856,
+            934,
+            157
           ],
           "name": "FunToken",
           "scope": 22
@@ -657,7 +657,7 @@
               {
                 "attributes": {
                   "name": "ERC20",
-                  "referencedDeclaration": 800,
+                  "referencedDeclaration": 856,
                   "type": "contract ERC20"
                 },
                 "id": 3,
@@ -732,7 +732,7 @@
                       "overloadedDeclarations": [
                         null
                       ],
-                      "referencedDeclaration": 800,
+                      "referencedDeclaration": 856,
                       "type": "type(contract ERC20)",
                       "value": "ERC20"
                     },
@@ -809,7 +809,7 @@
                               "overloadedDeclarations": [
                                 null
                               ],
-                              "referencedDeclaration": 676,
+                              "referencedDeclaration": 732,
                               "type": "function (address,uint256)",
                               "value": "_mint"
                             },
@@ -947,12 +947,12 @@
         }
       },
       "links": {},
-      "address": "0xE50923b5c73644847439569B7659746d580655E5",
-      "transactionHash": "0xad65d9bdd808ae901e780f1b867c2e44144abc1faf8786b296650ce4d7d5e115"
+      "address": "0xbf2C1114BB03E0633F8568E16008cFD97dCF35f6",
+      "transactionHash": "0x521cccd9548fa4ee31d83e867967f7469cd7c33e3c603c27ce7c410831856a36"
     }
   },
   "schemaVersion": "3.3.3",
-  "updatedAt": "2020-12-30T05:12:00.478Z",
+  "updatedAt": "2020-12-31T06:14:25.703Z",
   "networkType": "ethereum",
   "devdoc": {
     "kind": "dev",

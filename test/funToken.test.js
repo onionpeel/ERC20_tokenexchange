@@ -1,7 +1,7 @@
 const FunToken = artifacts.require('FunToken');
 const Web3 = require('web3');
 
-contract('FunToken tests', async accounts => {
+contract('FunToken tests: deploy', async accounts => {
   it('should deploy the FunToken', async () => {
     const funToken = await FunToken.new(Web3.utils.toWei('1000', 'ether'));
     const address = funToken.address;
