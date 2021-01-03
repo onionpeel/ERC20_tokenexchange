@@ -7,10 +7,17 @@ contract TokenExchange {
   FunToken public funToken;
 
   event BoughtTokens(
-    address seller,
+    address indexed seller,
     address indexed buyer,
     uint indexed tokenAmount,
-    uint indexed rate
+    uint rate
+  );
+
+  event SoldTokens(
+    address indexed buyer,
+    address indexed seller,
+    uint indexed tokenAmount,
+    uint rate
   );
 
   constructor(FunToken _funToken, uint _exchangeRate) {
@@ -18,8 +25,12 @@ contract TokenExchange {
     funToken = _funToken;
   }
 
-  function ethToTokens(uint _eth) private view returns(uint) {
-    return _eth * exchangeRate * 10**18;
+  function ethToTokens(uint _wei) private view returns(uint) {
+    return _wei * exchangeRate;
+  }
+
+  function tokensToWei(uint _tokens) private view returns(uint) {
+    return _tokens / exchangeRate * 10**18;
   }
 
   function buyTokens() public payable {
@@ -27,21 +38,25 @@ contract TokenExchange {
     funToken.transfer(msg.sender, tokens);
     emit BoughtTokens(address(this), msg.sender, tokens, exchangeRate);
   }
+
+  function sellTokens(uint tokens) public {
+    uint ethInWei = tokensToWei(tokens);
+    uint tokensInWei = tokens*10**18;
+    uint sellerBalance = funToken.balanceOf(msg.sender);
+
+    require(sellerBalance >= tokens, 'Seller trying to sell more tokens than are in seller account');
+    require(address(this).balance >= ethInWei, 'Transaction exceeds TokenExchange Ether balance');
+    //transfer tokens from msg.sender to tokenExchange contract
+    funToken.transferFrom(msg.sender, address(this), tokensInWei);
+    //transfer eth from tokenExchange contract to msg.sender
+    msg.sender.transfer(ethInWei);
+
+    emit SoldTokens(msg.sender, address(this), tokensInWei, exchangeRate);
+  }
 }
 
-// t = 100 * 1
-// 100 = 100 * 1
-// 100/eR = e
-// public buyTokens
-// input: eth value
-// 1. convert eth to token amount
-// 2. funToken.transfer(msg.sender, tokens)
-// 3. emit event(from address, to address, token amount, exchange rate)
-
 // public sellTokens
-
-// event
-// Bought
-//   amount
-//   buyer msg.sender
-//   buyerNewBalance
+// 1. convert token amount to eth
+// 2. approve
+// 3 transferfrom
+// 4 emit SoldTokens

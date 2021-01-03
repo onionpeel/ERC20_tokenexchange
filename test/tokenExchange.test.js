@@ -3,9 +3,10 @@ const FunToken = artifacts.require('FunToken');
 const Web3 = require('Web3');
 
 contract('TokenExchange contract', async ([deployer, buyer]) => {
+  const web3 = new Web3('http://127.0.0.1:9545');
   let funToken, tokenExchange;
 
-  before(async () => {
+  beforeEach(async () => {
     funToken = await FunToken.new(Web3.utils.toWei('100000', 'ether'));
     tokenExchange = await TokenExchange.new(funToken.address, '100')
     await funToken.transfer(tokenExchange.address, Web3.utils.toWei('100000', 'ether'));
@@ -32,15 +33,43 @@ contract('TokenExchange contract', async ([deployer, buyer]) => {
 
   describe('TokenExchange contract: buyTokens()', () => {
     it('user can purchase 200 tokens at the exchangeRate', async () => {
-      await tokenExchange.buyTokens({from: buyer, value: 2});
+      await tokenExchange.buyTokens({from: buyer, value: Web3.utils.toWei('2', 'ether')});
       const buyerBalance = await funToken.balanceOf(buyer);
+      const tokenExchangeEthBalance = await web3.eth.getBalance(tokenExchange.address);
       assert.equal(buyerBalance, Web3.utils.toWei('200', 'ether'));
+      assert.equal(tokenExchangeEthBalance, Web3.utils.toWei('2', 'ether'));
     });
 
     it('A BoughtTokens event should be emitted', async () => {
-      const receipt = await tokenExchange.buyTokens({from: buyer, value: 2});
-      console.log(receipt.logs[0].args)
-      const event = await tokenExchange.BoughtTokens((error, result) => console.log(result));
+      const receipt = await tokenExchange.buyTokens({from: buyer, value: Web3.utils.toWei('2', 'ether')});
+      const event = receipt.logs[0].args;
+      assert.equal(event.seller, tokenExchange.address);
+      assert.equal(event.buyer, buyer);
+      assert.equal(event.tokenAmount, Web3.utils.toWei('200'));
+      assert.equal(event.rate, '100');
+    });
+  });
+
+  describe('TokenExchange contract: sellTokens()', () => {
+    it('user can sell 100 tokens at exchangeRate', async () => {
+      await tokenExchange.buyTokens({from: buyer, value: Web3.utils.toWei('2', 'ether')});
+      await funToken.approve(tokenExchange.address, Web3.utils.toWei('100', 'ether'), {from: buyer});
+
+      const receipt = await tokenExchange.sellTokens(100, {from: buyer});
+      const event = receipt.logs[0].args;
+
+      let tokenExchangeEthBalance = await web3.eth.getBalance(tokenExchange.address);
+      tokenExchangeEthBalance = Web3.utils.fromWei(tokenExchangeEthBalance, 'ether');
+
+      let buyerTokenBalance = await funToken.balanceOf(buyer);
+      buyerTokenBalance = Web3.utils.fromWei(buyerTokenBalance, 'ether');
+
+      assert.equal(tokenExchangeEthBalance, '1');
+      assert.equal(buyerTokenBalance, '100');
+      assert.equal(event.buyer, buyer);
+      assert.equal(event.seller, tokenExchange.address);
+      assert.equal(Web3.utils.fromWei(event.tokenAmount, 'ether'), '100');
+      assert.equal(event.rate, '100');
     });
   });
 });
