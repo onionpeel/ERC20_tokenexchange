@@ -1,3 +1,4 @@
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.7.6;
 
 import './FunToken.sol';
@@ -20,6 +21,10 @@ contract TokenExchange {
     uint rate
   );
 
+  event SenderTokenBalance(
+    uint indexed userBalance
+  );
+
   constructor(FunToken _funToken, uint _exchangeRate) {
     exchangeRate = _exchangeRate;
     funToken = _funToken;
@@ -37,6 +42,7 @@ contract TokenExchange {
     uint tokens = ethToTokens(msg.value);
     funToken.transfer(msg.sender, tokens);
     emit BoughtTokens(address(this), msg.sender, tokens, exchangeRate);
+    emit SenderTokenBalance(funToken.balanceOf(msg.sender));
   }
 
   function sellTokens(uint tokens) public {
@@ -52,11 +58,6 @@ contract TokenExchange {
     msg.sender.transfer(ethInWei);
 
     emit SoldTokens(msg.sender, address(this), tokensInWei, exchangeRate);
+    emit SenderTokenBalance(funToken.balanceOf(msg.sender));
   }
 }
-
-// public sellTokens
-// 1. convert token amount to eth
-// 2. approve
-// 3 transferfrom
-// 4 emit SoldTokens

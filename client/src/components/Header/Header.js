@@ -1,11 +1,15 @@
 import Navbar from 'react-bootstrap/Navbar';
+import { useSelector } from 'react-redux';
+import './Header.css';
 
 export const Header = () => {
+  let userBalance = useSelector(state => state.userBalance.value);
+
   return (
-    <Navbar bg="light">
+    <Navbar className="Header">
       <Navbar.Brand href="#home">FUN Token Exchange</Navbar.Brand>
       <Navbar.Text className="ml-auto">
-        What
+        User balance: {userBalance}
       </Navbar.Text>
     </Navbar>
 

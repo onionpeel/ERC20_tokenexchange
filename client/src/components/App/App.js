@@ -2,8 +2,9 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import { Header } from '../Header/Header';
+import { ExchangeRate } from '../ExchangeRate/ExchangeRate';
 import { initialize, unsubscribe } from '../../redux/initialize/initializeAction';
-
+import './App.css';
 
 function App() {
   const dispatch = useDispatch();
@@ -20,6 +21,7 @@ function App() {
     <div className="App">
       <Container>
         <Header />
+        <ExchangeRate />
       </Container>
     </div>
   );

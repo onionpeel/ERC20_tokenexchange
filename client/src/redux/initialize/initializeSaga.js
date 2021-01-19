@@ -1,4 +1,5 @@
-import { put, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest, call, take } from 'redux-saga/effects';
+import { eventChannel } from 'redux-saga';
 import Web3 from 'web3';
 import FunToken from '../../build/FunToken.json';
 import TokenExchange from '../../build/TokenExchange';
@@ -50,13 +51,40 @@ const initializeTokenExchangeContract = async () => {
   );
   return true;
 };
-
+//fetch user token balance
 const getTokenBalance = async address => {
   let balance = await funTokenContract.methods.balanceOf(address).call();
   balance = web3ws.utils.fromWei(balance, 'ether');
   return balance;
 };
+//subscribe to any changes in the user token balance
+function eventSubscribe() {
+  return eventChannel(emitter => {
+    let eventSubscription = tokenExchangeContract.events.SenderTokenBalance({fromBlock: "latest"})
+      .on('data', event => {
+        console.log("event: ", event);
+        emitter(event);
+      })
+      .on('error', (error, receipt) => {
+        if(error) {
+          console.log(error);
+          emitter(error);
+        };
+        if(receipt) {
+          console.log(receipt);
+          emitter(receipt);
+        };
+      });
 
+    const unsubscribe = () => {
+      eventSubscription.unsubscribe(error => {
+        if (error) console.log(error);
+      });
+    };
+
+    return unsubscribe;
+  });
+};
 
 
 function* initializeSaga () {
@@ -67,8 +95,15 @@ function* initializeSaga () {
     yield initializeTokenExchangeContract();
     const userBalance = yield getTokenBalance('0x9B178180497DF084C8eB4AA6e267cA25150DA585');
     yield put(setUserBalance(userBalance));
-  } catch (error) {
 
+    const channel = yield call(eventSubscribe);
+    while(true) {
+      let event = yield take(channel);
+      console.log('saga userBalance event: ', event);
+    };
+
+  } catch (error) {
+      console.log(error);
   };
 };
 
