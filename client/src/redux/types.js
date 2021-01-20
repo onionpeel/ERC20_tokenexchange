@@ -6,3 +6,6 @@ export const CLEAR_ERROR = 'CLEAR_ERROR'
 
 export const SET_USER_BALANCE = 'SET_USER_BALANCE';
 export const LOADING_USER_BALANCE = 'LOADING_USER_BALANCE';
+
+export const BUY_FORM = 'BUY_FORM';
+export const SELL_FORM = 'SELL_FORM';

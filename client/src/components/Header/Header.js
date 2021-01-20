@@ -9,7 +9,7 @@ export const Header = () => {
     <Navbar className="Header">
       <Navbar.Brand href="#home">FUN Token Exchange</Navbar.Brand>
       <Navbar.Text className="ml-auto">
-        User balance: {userBalance}
+        <strong>User balance: {userBalance}</strong>
       </Navbar.Text>
     </Navbar>
 
