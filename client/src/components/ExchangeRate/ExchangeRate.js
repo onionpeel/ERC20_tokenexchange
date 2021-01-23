@@ -19,10 +19,10 @@ export const ExchangeRate = () => {
     <Row className="justify-content-center">
       <Col md="9">
         <div className="ExchangeRate">
-          <div>
+          <div className="exchangeRate-text">
             1 ETH = 100 FUN Tokens
           </div>
-          <div className="d-flex justify-content-around mb-2">
+          <div className="d-flex justify-content-around mb-3">
             <Button variant="dark" onClick={handleOnClickBuy}>Buy tokens</Button>
             <Button variant="dark" onClick={handleOnClickSell}>Sell tokens</Button>
           </div>

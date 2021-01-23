@@ -1,31 +1,39 @@
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Row, Col } from 'react-bootstrap';
 
 export const SellForm = () => {
   return (
-    <Form>
-      <Form.Group as={Row} controlId="formHorizontalEmail">
-        <Form.Label column sm={2}>
-          Email
-        </Form.Label>
-        <Col sm={10}>
-          <Form.Control type="email" placeholder="Email" />
+    <div>
+      <Row>
+        <Col>
+          <div className="d-flex justify-content-center mt-3 mb-3">
+            <Form inline>
+              <Form.Label htmlFor="amount" style={{fontSize: '1.75em'}}>
+                Amount of FUN tokens to sell:
+              </Form.Label>
+              <Form.Control
+                className="ml-2"
+                id="amount"
+                placeholder="0"
+                style={{backgroundColor: "#f5e1fa"}}
+              />
+            </Form>
+          </div>
         </Col>
-      </Form.Group>
+      </Row>
 
-      <Form.Group as={Row} controlId="formHorizontalPassword">
-        <Form.Label column sm={2}>
-          Password
-        </Form.Label>
-        <Col sm={10}>
-          <Form.Control type="password" placeholder="Password" />
+      <Row>
+        <Col className="d-flex justify-content-center mb-4">
+          <div style={{fontSize: "1.75em"}}>
+            XXXX ETH
+          </div>
         </Col>
-      </Form.Group>
+      </Row>
 
-      <Form.Group as={Row}>
-        <Col sm={{ span: 10, offset: 2 }}>
-          <Button type="submit">Sign in</Button>
+      <Row>
+        <Col className="d-flex justify-content-center mb-3">
+          <Button variant='secondary' type="submit">Sell tokens</Button>
         </Col>
-      </Form.Group>
-    </Form>
+      </Row>
+    </div>
   );
 };

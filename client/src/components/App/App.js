@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import { Header } from '../Header/Header';
 import { ExchangeRate } from '../ExchangeRate/ExchangeRate';
-import { Transact } from '../Transact/Transact';
+import { TransactionForm } from '../TransactionForm/TransactionForm';
 import { initialize, unsubscribe } from '../../redux/initialize/initializeAction';
 import './App.css';
 
@@ -23,7 +23,7 @@ function App() {
       <Container>
         <Header />
         <ExchangeRate />
-        <Transact />
+        <TransactionForm />
       </Container>
     </div>
   );
