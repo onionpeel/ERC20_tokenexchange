@@ -94,13 +94,15 @@ function* initializeSaga () {
     yield createWeb3ws();
     yield initializeFunTokenContract();
     yield initializeTokenExchangeContract();
-    yield put({type: TOKEN_EXCHANGE_CONTRACT, payload: tokenExchangeContract})
+    yield put({type: TOKEN_EXCHANGE_CONTRACT, payload: tokenExchangeContract});
+    
     const userBalance = yield getTokenBalance('0x9B178180497DF084C8eB4AA6e267cA25150DA585');
     yield put(setUserBalance(userBalance));
 
     const channel = yield call(eventSubscribe);
     while(true) {
       let event = yield take(channel);
+      yield put(setUserBalance(web3ws.utils.fromWei(event.returnValues.userBalance)));
     };
 
   } catch (error) {

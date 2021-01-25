@@ -1,6 +1,9 @@
 import { useState } from 'react';
 import { Form, Button, Row, Col } from 'react-bootstrap';
+import Web3 from 'web3';
 import { useSelector } from 'react-redux';
+const USER_ADDRESS = '0x9B178180497DF084C8eB4AA6e267cA25150DA585';
+const web3 = new Web3();
 
 export const BuyForm = () => {
   let tokenExchangeContract = useSelector(state => state.tokenExchangeContract);
@@ -8,15 +11,15 @@ export const BuyForm = () => {
   let [ethAmount, setEthAmount] = useState(0);
 
   const handleOnChange = e => {
-    console.log(e.target.value)
     setTokenAmount(e.target.value);
-    let eth = convertToEth(tokenAmount);
+    let eth = convertToEth(e.target.value);
     setEthAmount(eth);
   };
 
   const handleOnSubmit = e => {
     e.preventDefault();
-    console.log(ethAmount);
+    let weiValue = web3.utils.toWei(ethAmount);
+    tokenExchangeContract.methods.buyTokens().send({from: USER_ADDRESS, value: weiValue});
     setTokenAmount('');
     setEthAmount(0);
   };
@@ -24,10 +27,6 @@ export const BuyForm = () => {
   const convertToEth = tokens => {
     let eth = tokens / 100;
     return eth.toString();
-  };
-
-  const buy = async () => {
-
   };
 
   return (
