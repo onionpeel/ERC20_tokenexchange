@@ -45,16 +45,31 @@ contract TokenExchange {
     emit SenderTokenBalance(funToken.balanceOf(msg.sender));
   }
 
-  function sellTokens(uint tokens) public {
+  function sellTokens(uint tokens) public returns (uint, uint, uint) {
     uint ethInWei = tokensToWei(tokens);
     uint tokensInWei = tokens*10**18;
     uint sellerBalance = funToken.balanceOf(msg.sender);
 
-    require(sellerBalance >= tokens, 'Seller trying to sell more tokens than are in seller account');
-    require(address(this).balance >= ethInWei, 'Transaction exceeds TokenExchange Ether balance');
+    require(sellerBalance >= tokensInWei, 'Seller trying to sell more tokens than are in seller account');
+
+    address addr = address(this);
+    uint contractBalance = addr.balance;
+
+    require(contractBalance >= ethInWei, 'Transaction exceeds TokenExchange Ether balance');
+
+
+    uint contractTokens = funToken.balanceOf(addr);
+
+    // return (tokensInWei, sellerBalance, contractTokens);
+
+
     //transfer tokens from msg.sender to tokenExchange contract
-    funToken.transferFrom(msg.sender, address(this), tokensInWei);
-    //transfer eth from tokenExchange contract to msg.sender
+    funToken.transferFrom(msg.sender, addr, tokensInWei);
+
+    // uint contractTokens = funToken.balanceOf(msg.sender);
+    // return contractTokens;
+
+    // transfer eth from tokenExchange contract to msg.sender
     msg.sender.transfer(ethInWei);
 
     emit SoldTokens(msg.sender, address(this), tokensInWei, exchangeRate);

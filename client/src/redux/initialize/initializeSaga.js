@@ -11,7 +11,8 @@ import { loadingUserBalance } from '../userBalance/userBalanceAction';
 import {
   INITIALIZE_SAGA,
   UNSUBSCRIBE_SAGA,
-  TOKEN_EXCHANGE_CONTRACT
+  TOKEN_EXCHANGE_CONTRACT,
+  FUN_TOKEN_CONTRACT
 } from '../types';
 const TEMP_PRIVATE_KEY = 'b5b9941f219d78a896fbdfe571df2e756a846e57bcc853cdd8f445a6b4e5f983';
 
@@ -95,7 +96,7 @@ function* initializeSaga () {
     yield initializeFunTokenContract();
     yield initializeTokenExchangeContract();
     yield put({type: TOKEN_EXCHANGE_CONTRACT, payload: tokenExchangeContract});
-    
+    yield put({type: FUN_TOKEN_CONTRACT, payload: funTokenContract});
     const userBalance = yield getTokenBalance('0x9B178180497DF084C8eB4AA6e267cA25150DA585');
     yield put(setUserBalance(userBalance));
 

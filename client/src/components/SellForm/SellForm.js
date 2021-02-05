@@ -7,6 +7,7 @@ const web3 = new Web3();
 
 export const SellForm = () => {
   let tokenExchangeContract = useSelector(state => state.tokenExchangeContract);
+  let funTokenContract = useSelector(state => state.funTokenContract);
   let [tokenAmount, setTokenAmount] = useState('');
   let [ethAmount, setEthAmount] = useState(0);
 
@@ -18,9 +19,31 @@ export const SellForm = () => {
 
   const handleOnSubmit = async e => {
     e.preventDefault();
+    let userBalance1 = await funTokenContract.methods.balanceOf(USER_ADDRESS).call();
+    console.log('userBalance1: ', web3.utils.fromWei(userBalance1))
+
     // let weiValue = web3.utils.toWei(ethAmount);
-    await 
-    await tokenExchangeContract.methods.sellTokens(tokenAmount).send({from: USER_ADDRESS});
+    let tokenAddress = tokenExchangeContract.options.address;
+    console.log('tokenAddress: ', tokenAddress);
+
+    let approveTokenAmount = web3.utils.toWei(tokenAmount, 'ether');
+    console.log('tokenAmount: ', approveTokenAmount);
+    await funTokenContract.methods.approve(tokenAddress, approveTokenAmount).send({from: USER_ADDRESS});
+    let allowance = await funTokenContract.methods.allowance(USER_ADDRESS, tokenAddress).call();
+    console.log('allowance: ', allowance)
+
+    let tokenBalance = await funTokenContract.methods.balanceOf(tokenAddress).call();
+    console.log('balance of tokenAddress: ', web3.utils.fromWei(tokenBalance))
+
+    let ethInWei = await tokenExchangeContract.methods.sellTokens(tokenAmount).send({from: USER_ADDRESS});
+    console.log('ethInWei: ', ethInWei);
+
+    // await funTokenContract.methods.transferFrom(tokenAddress, USER_ADDRESS, tokenAmount).send({from: USER_ADDRESS});
+    // await funTokenContract.methods.transfer(tokenAddress, tokenAmount).send({from: USER_ADDRESS});
+
+    let userBalance2 = await funTokenContract.methods.balanceOf(USER_ADDRESS).call();
+    console.log('userBalance2: ', web3.utils.fromWei(userBalance2))
+
     setTokenAmount('');
     setEthAmount(0);
   };
